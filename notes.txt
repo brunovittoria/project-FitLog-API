@@ -46,7 +46,9 @@ npm i @types/cors --save-dev
 
 #3 CONECTANDO AO DB
 
-Agora iremos conectar o postgreSQL + BEEKEEPER + PRISMA
+1° Abrir o PGADMIN e criar o DB
+2° Abrir o BEEKEEPER e conectar com o postgreSQL
+3° Conectar com PRISMA
 
 Rodamos o cmd no diretorio do project SERVER: 
 
