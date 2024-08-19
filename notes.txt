@@ -60,3 +60,55 @@ Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
 
 
 ##########################################
+PAREI NO 07:04 CRIANDO TABELAS
+#4 CRIANDO TABELAS
+
+Instalar extensao do PRISMA VSCODE e PRISMA INSIDER
+
+Vamos configurar o prisma, entao vamos criar uma pasta com nome prisma dentro do src
+
+Depois devemos modelar nosso DB dentro do nosso SCHEMA que esta na cartella fora do src "prisma"
+
+Vamos precisar de tabelas para:
+
+Tabela USER:
+ -Id
+ -Nome: string
+ -Email: string
+ -Senha: string
+ -age: number
+ -weight: number
+ -height: number
+ -subscription_id: string
+
+USER + TREINOS (RELACAO 1 - N) 1 User pode ter varios treinos
+
+Tabela TREINOS:
+ -Id
+ -nome: String
+ -time: number
+ -qtExercises: number
+ -description: string
+ -currentRep
+ -currentWeight
+ -stepTitle
+ -stepDescription
+
+USER + SUBS (RELACAO 1 - 1)
+
+Tabela Subscription
+
+ -id: uuid
+ -status: string
+ -priceId: string
+ -user_id: (FK) string
+
+Agora vamos criar o modelo user em nosso schema.prisma na PASTA PRISMA
+
+OBS: PARA IDENTIFICAR AS RELACOES NAS TABELAS BASTA OLHAR PARA O FIGMA E ENTENDER QUAIS AS RELACOES DENTRO DO APP
+
+Feito os modelos devemos rodar um comando para rodar as relacoes das tabelas:
+
+npx prisma migrate dev
+
+Nome da Migration: create_tables
