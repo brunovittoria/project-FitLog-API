@@ -1,114 +1,147 @@
 /################# BACKEND #################\
 
-rodar: 
-
-npm run dev
 
 #1 CONFIGURACAO INICIAL
 
-COMMANDS USED:
+  COMMANDS USED:
 
-npm init -y
-npm install typescript --save-dev
-npm i express
-npm install @types/express --save-dev
-npx tsc --init
-npm i cors cookie-parser dotenv jsonwebtoken morgan nodemon bcrypt
-npm i ts-node-dev typescript --save-dev   //Serve pro TS entender nossos imports
+  npm init -y
+  npm install typescript --save-dev
+  npm i express
+  npm install @types/express --save-dev
+  npx tsc --init
+  npm i cors cookie-parser dotenv jsonwebtoken morgan nodemon bcryptjs
+  npm i ts-node-dev typescript --save-dev   //Serve pro TS entender nossos imports
+  npm install @types/bcryptjs --save-dev
 
 
-Agora vamos criar o script pra rodar nosso projeto:
+  Agora vamos criar o script pra rodar nosso projeto:
 
-  "scripts": {
-    "dev": "ts-node-dev --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "scripts": {
+      "dev": "ts-node-dev --transpile-only src/server.ts",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
 
-Agora testamos nossas rotas e td funciona
-
+  Agora testamos nossas rotas e td funciona
 
 ##########################################
 
 #2 TRATANDO ERROS DA API
 
-Usar dep:
+  Usar dep:
 
-npm i express-async-errors
+  npm i express-async-errors
 
-Criamos o file routes.ts
-Criamos o file server.ts onde tratamos os erros e testamos as rotas
+  Criamos o file routes.ts
+  Criamos o file server.ts onde tratamos os erros e testamos as rotas
 
-Instalaçao e configuraçao do cors como typagem TS:
-npm i @types/cors --save-dev
-
+  Instalaçao e configuraçao do cors como typagem TS:
+  npm i @types/cors --save-dev
 
 ##########################################
 
 #3 CONECTANDO AO DB
 
-1° Abrir o PGADMIN e criar o DB
-2° Abrir o BEEKEEPER e conectar com o postgreSQL
-3° Conectar com PRISMA
+  1° Abrir o PGADMIN e criar o DB
+  2° Abrir o BEEKEEPER e conectar com o postgreSQL
+  3° Conectar com PRISMA
 
-Rodamos o cmd no diretorio do project SERVER: 
+  Rodamos o cmd no diretorio do project SERVER: 
 
-npm install prisma --save-dev
-npm i @prisma/client
-npx prisma init
+  npm install prisma --save-dev
+  npm i @prisma/client
+  npx prisma init
 
-Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
+  Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
+
+##########################################
+
+#4 CRIANDO TABELAS
+
+  Instalar extensao do PRISMA VSCODE e PRISMA INSIDER
+
+  Vamos configurar o prisma, entao vamos criar uma pasta com nome prisma dentro do src
+
+  Depois devemos modelar nosso DB dentro do nosso SCHEMA que esta na cartella fora do src "prisma"
+
+  Vamos precisar de tabelas para:
+
+  Tabela USER:
+  -Id
+  -Nome: string
+  -Email: string
+  -Senha: string
+  -age: number
+  -weight: number
+  -height: number
+  -subscription_id: string
+
+  USER + TREINOS (RELACAO 1 - N) 1 User pode ter varios treinos
+
+  Tabela TREINOS:
+  -Id
+  -nome: String
+  -time: number
+  -qtExercises: number
+  -description: string
+  -currentRep
+  -currentWeight
+  -stepTitle
+  -stepDescription
+
+  USER + SUBS (RELACAO 1 - 1)
+
+  Tabela Subscription
+
+  -id: uuid
+  -status: string
+  -priceId: string
+  -user_id: (FK) string
+
+  Agora vamos criar o modelo user em nosso schema.prisma na PASTA PRISMA
+
+  OBS: PARA IDENTIFICAR AS RELACOES NAS TABELAS BASTA OLHAR PARA O FIGMA E ENTENDER QUAIS AS RELACOES DENTRO DO APP
+
+  Feito os modelos devemos rodar um comando para rodar as relacoes das tabelas:
+
+  npx prisma migrate dev
+
+  Nome da Migration: create_tables
+
+##########################################
+
+#5 CRIANDO ESTRUTURA
+
+  Iremos criar nossa estrutura de controllers e services.
+  Lembre-se sempre de antes de construir alguma funcionalidade, olhar o figma file para visualizar quais funcionalidades o app pode precisar.
+
+  -Controller (Controlador):
+
+    O que é: Imagine um controlador como um maestro em uma orquestra. Ele recebe pedidos (como uma música específica) e direciona os músicos para executar as ações necessárias.
+
+    Exemplo: Em um jogo, o controlador seria como um jogador que pressiona os botões para fazer o personagem se mover ou pular.
+
+  -Services (Serviços):
+
+    O que são: Os serviços são como assistentes que realizam tarefas específicas. Eles são como pessoas especializadas em fazer algo muito bem.
+
+    Exemplo: Se pensarmos em uma biblioteca, o serviço seria como o bibliotecário que organiza os livros, ajuda as pessoas a encontrar o que precisam e verifica se os livros estão em bom estado.
+
+  ****EXEMPLOS REAIS****
+
+  -Como funcionam rotas, controllers e serviços?
+
+    o user acessa a rota e a rota vai chamar o controller que ira fazer alguma acao. Dentro do controller basicamente pegamos algo recebido pelo front como o body, auth, token, query params...
+
+    Dentro do controller chamamos um serviço para executar uma açao de acordo com oque pegamos do nosso front.
+
+    O serviço que se ocupa de manipular o DB, desde criar, atualizar, editar e deletar dentro do DB e devolver a informaçao pro controller se deu certo ou nao e o controller devolve pro usuario o via res.json o exito da operaçao.
+
+  -Postman
+    Depois de criado o controller, services e rota lembrar de fazer uma requesiçao de TESTE sempre no Postman
 
 
 ##########################################
-PAREI NO 07:04 CRIANDO TABELAS
-#4 CRIANDO TABELAS
 
-Instalar extensao do PRISMA VSCODE e PRISMA INSIDER
+#6 CADASTRANDO USUARIO 
 
-Vamos configurar o prisma, entao vamos criar uma pasta com nome prisma dentro do src
-
-Depois devemos modelar nosso DB dentro do nosso SCHEMA que esta na cartella fora do src "prisma"
-
-Vamos precisar de tabelas para:
-
-Tabela USER:
- -Id
- -Nome: string
- -Email: string
- -Senha: string
- -age: number
- -weight: number
- -height: number
- -subscription_id: string
-
-USER + TREINOS (RELACAO 1 - N) 1 User pode ter varios treinos
-
-Tabela TREINOS:
- -Id
- -nome: String
- -time: number
- -qtExercises: number
- -description: string
- -currentRep
- -currentWeight
- -stepTitle
- -stepDescription
-
-USER + SUBS (RELACAO 1 - 1)
-
-Tabela Subscription
-
- -id: uuid
- -status: string
- -priceId: string
- -user_id: (FK) string
-
-Agora vamos criar o modelo user em nosso schema.prisma na PASTA PRISMA
-
-OBS: PARA IDENTIFICAR AS RELACOES NAS TABELAS BASTA OLHAR PARA O FIGMA E ENTENDER QUAIS AS RELACOES DENTRO DO APP
-
-Feito os modelos devemos rodar um comando para rodar as relacoes das tabelas:
-
-npx prisma migrate dev
-
-Nome da Migration: create_tables
