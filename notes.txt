@@ -140,8 +140,39 @@
   -Postman
     Depois de criado o controller, services e rota lembrar de fazer uma requesiçao de TESTE sempre no Postman
 
-
 ##########################################
 
 #6 CADASTRANDO USUARIO 
 
+  Agora iremos cadastrar os usuarios quando eles fizerem o registro em nosso form la no nosso DB
+
+  Para isso iremos chamar o nosso prisma client no services de USER (Que é ele que recebera os dados do controller e ira executar alguma açao.) e criar nossas verificacoes para criar o user.
+
+  Depois devemos usar o bcryptjs para encryptar a password.
+
+  Depois de fazer o hash da pwd e criar o user, iremos fazer um teste no nosso postman.
+
+  Files modificados: src > controllers > user + src > services > user + src > routes > User Routes
+
+##########################################
+
+#7 LOGANDO USUARIOS NO DB
+
+  Criamos un novo file que ira controlar quando o usuario se logar, AuthUserController.ts
+  E o servico que ira tratar do login no file AuthUserService.ts
+
+  Agora devemos configurar nossa rota de login
+
+  Devemos instalar os types do JWT:
+
+  npm i --save-dev @types/jsonwebtoken
+
+  Feito isso vamos no file .env e criamos nossa senha secreta que somente nos podemos ter acesso
+
+  (TODA VEZ QUE MEXER NO FILE .ENV LEMBRAR DE PARAR O PROJETO E RODAR-LO NOVAMENTE)
+
+  Lembrar de mudar o strict true para FALSE para o TS ler as props globais dos files .env
+
+  Apos criar o service , controller e route. Devemos testar nossa rota no POSTMAN
+
+##########################################
