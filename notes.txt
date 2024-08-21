@@ -176,3 +176,31 @@
   Apos criar o service , controller e route. Devemos testar nossa rota no POSTMAN
 
 ##########################################
+
+#8 CRIANDO MIDDLEWARES
+
+  O middleware ele inicia antes de qualquer coisa tanto como o controller ou service ele vai ser tipo o "GUARDA" que se algo nao tiver correto ira barrar o acesso a rota
+
+  Aqui criamos o service, controller e rota para pegar detalhes do usuario.
+
+  Porem antes de fazer o GET dessas informaçoes sensiveis do usuario, queremos criar um "validador/middleware" antes de chegar na rota para saber se o token é compativel com o usuario.
+
+  EXEMPLO:
+
+  Em nosso app vamos supor que um hacker tente pegar a rota e acessar-la, ele pode fazer isso caso a rota seja publica, caso seja privada sera impossivel, portanto vamos aprender a "Verificar users" antes deles puderem acessar a rota.
+
+  Criamos nosso primeiro middleware (isAuthenticated.ts)
+
+  Na criaçao é importante testar no POSTMAN pra saber se esta caindo nos condicionais, testamos nosso token com o bearer inserindo o token gerado no login e colocamos o prefixo "Bearer"
+
+  Criamos um file "types" que contem a tipagem sobreescrevendo a tipagem do express.
+
+  Devemos descomentar o typeRoots do tsconfig.json e colocar o path do nosso file @types pra que o typescript entenda nossa declaraçao do FILE.
+
+##########################################
+
+#9 ROTAS USER DETAILS
+
+Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
+
+##########################################

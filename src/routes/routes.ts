@@ -3,6 +3,8 @@ import express, { Router, Request, Response } from 'express'
 import { CreateUserController } from '../controllers/user/CreateUserController'
 import { AuthUserController }   from '../controllers/user/AuthUserController'
 
+import { isAuthenticated } from '../middlewares/isAuth'
+
 const router = Router()
 
 /*Rota teste Inicial
