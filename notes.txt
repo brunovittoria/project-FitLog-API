@@ -5,14 +5,14 @@
 
   COMMANDS USED:
 
-  npm init -y
-  npm install typescript --save-dev
-  npm i express
-  npm install @types/express --save-dev
+  yarn install
+  yarn init
+  yarn add typescript --save-dev
+  yarn add @types/express --save-dev
   npx tsc --init
-  npm i cors cookie-parser dotenv jsonwebtoken morgan nodemon bcryptjs
-  npm i ts-node-dev typescript --save-dev   //Serve pro TS entender nossos imports
-  npm install @types/bcryptjs --save-dev
+  yarn add cors cookie-parser dotenv jsonwebtoken morgan nodemon bcryptjs express
+  yarn add ts-node-dev typescript --save-dev   //Serve pro TS entender nossos imports
+  yarn add @types/bcryptjs --save-dev
 
 
   Agora vamos criar o script pra rodar nosso projeto:
@@ -48,8 +48,8 @@
 
   Rodamos o cmd no diretorio do project SERVER: 
 
-  npm install prisma --save-dev
-  npm i @prisma/client
+  yarn add prisma --save-dev
+  yarn add @prisma/client
   npx prisma init
 
   Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
