@@ -3,6 +3,8 @@
 
 #1 CONFIGURACAO INICIAL
 
+  Documentaçao dos Requisitos: https://docs.google.com/document/d/1_eMr_LubXI2ynhCsAPCB6odESqUneLR7B4E6fY0UbU4/edit#heading=h.n7g99tnubyho
+
   COMMANDS USED:
 
   yarn install
@@ -201,6 +203,8 @@
 
 #9 ROTAS USER DETAILS
 
-Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
+  Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
 
 ##########################################
+
+#10 MUDAR DB PRA MONGODB!!!!!!!!!!
