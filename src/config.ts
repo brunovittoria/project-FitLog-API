@@ -1,7 +1,4 @@
 const environment = {
-  PORT: '8001',
-  MONGODB_PORT: '27017',
-  MONGO_DOMAIN: '127.0.0.1',
   MONGODB_DATABASE: 'FitLog',
   JWT_EXPIRATION_TIME: '10'
 }
@@ -22,10 +19,7 @@ const milisecondsPerDay = MILISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_
 const jwtExpirationTime = DAYS * milisecondsPerDay
 
 export const env = {
-  jwtExpirationTime,
-  dbPort: environment.MONGODB_PORT,
-  dbDomain: environment.MONGO_DOMAIN,
-  dbDatabase: environment.MONGODB_DATABASE
+  jwtExpirationTime
 }
 
 export const collectionsData = {
