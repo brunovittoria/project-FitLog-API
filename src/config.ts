@@ -6,6 +6,10 @@ const environment = {
   JWT_EXPIRATION_TIME: '10'
 }
 
+export const HOST_API = process.env.HOST_API || ''
+
+export const MONGO_URL = process.env.MONGO_URI || ''
+
 const MILISECONDS_PER_SECOND = 1000
 const SECONDS_PER_MINUTE = 60
 const MINUTES_PER_HOUR = 60

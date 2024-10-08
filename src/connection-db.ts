@@ -1,6 +1,8 @@
 import { createConnection } from 'mongoose'
 
-export const dbConnection = createConnection(process.env.MONGO_URL, {
+import { MONGO_URL } from './config'
+
+export const dbConnection = createConnection(MONGO_URL, {
   maxPoolSize: 10
 })
 
