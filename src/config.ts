@@ -7,8 +7,8 @@ const environment = {
 }
 
 export const HOST_API = process.env.HOST_API || ''
-
 export const MONGO_URL = process.env.MONGO_URI || ''
+export const JWT_SECRET = process.env.JWT_SECRET || ''
 
 const MILISECONDS_PER_SECOND = 1000
 const SECONDS_PER_MINUTE = 60
