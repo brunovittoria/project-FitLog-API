@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+import { Schema, Types } from 'mongoose'
 import { z } from 'zod'
 import { fitLogdbConnect } from '../shared'
 import { collectionsData } from '@/config'
@@ -8,7 +8,7 @@ const subscriptionStatus = ['active', 'canceled', 'expired'] as const
 
 // Validação com Zod para o modelo Subscription
 export const SubscriptionSchema = z.object({
-  userId: z.string(), // O ID do usuário, que será uma string (ObjectId como string)
+  userId: z.string(),
   status: z.enum(subscriptionStatus), // O status deve ser um dos valores válidos definidos no array
   priceId: z.string(), // O ID do preço como string
   created_at: z.date().optional(), // A data de criação pode ser opcional
@@ -21,7 +21,7 @@ export type ISubscription = DocumentSchemaZod<typeof SubscriptionSchema>
 // Criação do esquema Mongoose baseado no tipo `ISubscription`
 const SubscriptionModelSchema = new Schema<ISubscription>(
   {
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true }, // Relaciona o usuário à assinatura
+    userId: { type: String, required: true, unique: true }, // Relaciona o usuário à assinatura
     status: { type: String, enum: subscriptionStatus, required: true }, // Enum para status, aceitando apenas valores definidos no array
     priceId: { type: String, required: true }, // O preço da assinatura
     created_at: { type: Date, default: Date.now }, // A data de criação com valor padrão

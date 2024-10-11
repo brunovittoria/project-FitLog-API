@@ -58,15 +58,9 @@
 
 ##########################################
 
-#4 CRIANDO TABELAS
+#4 CRIANDO MODELOS
 
-  Instalar extensao do PRISMA VSCODE e PRISMA INSIDER
-
-  Vamos configurar o prisma, entao vamos criar uma pasta com nome prisma dentro do src
-
-  Depois devemos modelar nosso DB dentro do nosso SCHEMA que esta na cartella fora do src "prisma"
-
-  Vamos precisar de tabelas para:
+  Vamos criar os modelos do MONGODB para as seguintes collections
 
   Tabela USER:
   -Id
