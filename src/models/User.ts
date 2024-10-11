@@ -11,7 +11,13 @@ export const UserSchema = z.object({
   name: z.string(),
   email: z.string(),
   password: z.string(),
-  permissions: z.enum(userPermissions) // O campo "permissions" deve ser um dos valores de 'userPermissions' ('user' ou 'admin').
+  permissions: z.enum(userPermissions),
+  subscriptions: z
+    .object({
+      id: z.string().optional(),
+      status: z.string().optional()
+    })
+    .optional()
 })
 
 // Define o tipo IUser com base no esquema do Zod, combinando com mongoose.
@@ -27,9 +33,8 @@ const SchemaModel = new Schema<IUser>(
     permissions: { type: String, enum: userPermissions, default: 'user' }, // O campo "permissions" deve ser uma string, aceita só 'user' ou 'admin', e por padrão será 'user'.
     subscriptions: {
       id: { type: Schema.Types.ObjectId, ref: 'Subscription' }, // Relacionado à outra coleção
-      status: { type: String } // Pode adicionar campos adicionais relacionados à assinatura
-    },
-    required: false
+      status: { type: String, required: false } // Pode adicionar campos adicionais relacionados à assinatura
+    }
   },
   {
     timestamps: true, // Adiciona campos automáticos "createdAt" e "updatedAt".
