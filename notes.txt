@@ -32,13 +32,13 @@
 
   Usar dep:
 
-  npm i express-async-errors
+  yarn add express-async-errors
 
   Criamos o file routes.ts
   Criamos o file server.ts onde tratamos os erros e testamos as rotas
 
   Instalaçao e configuraçao do cors como typagem TS:
-  npm i @types/cors --save-dev
+  yarn add @types/cors --save-dev
 
 ##########################################
 
