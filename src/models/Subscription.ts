@@ -8,7 +8,9 @@ const subscriptionStatus = ['active', 'canceled', 'expired'] as const
 
 // Validação com Zod para o modelo Subscription
 export const SubscriptionSchema = z.object({
-  userId: z.string(),
+  userId: z.string().refine(val => Types.ObjectId.isValid(val), {
+    message: 'Invalid ObjectId'
+  }), // userId como string com validação para ObjectId
   status: z.enum(subscriptionStatus), // O status deve ser um dos valores válidos definidos no array
   priceId: z.string(), // O ID do preço como string
   created_at: z.date().optional(), // A data de criação pode ser opcional
@@ -16,12 +18,14 @@ export const SubscriptionSchema = z.object({
 })
 
 // Define o tipo `ISubscription` com base no esquema Zod
-export type ISubscription = DocumentSchemaZod<typeof SubscriptionSchema>
+export type ISubscription = z.infer<typeof SubscriptionSchema> & {
+  _id: string // O _id como string, representando o ObjectId
+}
 
 // Criação do esquema Mongoose baseado no tipo `ISubscription`
 const SubscriptionModelSchema = new Schema<ISubscription>(
   {
-    userId: { type: String, required: true, unique: true }, // Relaciona o usuário à assinatura
+    userId: { type: String, ref: 'User', required: true, unique: true },
     status: { type: String, enum: subscriptionStatus, required: true }, // Enum para status, aceitando apenas valores definidos no array
     priceId: { type: String, required: true }, // O preço da assinatura
     created_at: { type: Date, default: Date.now }, // A data de criação com valor padrão

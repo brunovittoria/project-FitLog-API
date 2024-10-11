@@ -12,12 +12,7 @@ export const UserSchema = z.object({
   email: z.string(),
   password: z.string(),
   permissions: z.enum(userPermissions),
-  subscriptions: z
-    .object({
-      id: z.string().optional(),
-      status: z.string().optional()
-    })
-    .optional()
+  subscriptionId: z.string().optional() // Agora referenciamos diretamente o ID da assinatura.
 })
 
 // Define o tipo IUser com base no esquema do Zod, combinando com mongoose.
@@ -31,10 +26,7 @@ const SchemaModel = new Schema<IUser>(
     email: { type: String, required: true, unique: true }, // Adiciona o campo email no Mongoose
     password: { type: String, required: true },
     permissions: { type: String, enum: userPermissions, default: 'user' }, // O campo "permissions" deve ser uma string, aceita só 'user' ou 'admin', e por padrão será 'user'.
-    subscriptions: {
-      id: { type: Schema.Types.ObjectId, ref: 'Subscription' }, // Relacionado à outra coleção
-      status: { type: String, required: false } // Pode adicionar campos adicionais relacionados à assinatura
-    }
+    subscriptionId: { type: Schema.Types.ObjectId, ref: 'Subscription', unique: true } // Relacionamento 1-para-1 com o model Subscription
   },
   {
     timestamps: true, // Adiciona campos automáticos "createdAt" e "updatedAt".
