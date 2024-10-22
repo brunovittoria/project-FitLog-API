@@ -26,7 +26,9 @@
 
   Agora testamos nossas rotas e td funciona
 
+
 ##########################################
+
 
 #2 TRATANDO ERROS DA API
 
@@ -40,7 +42,9 @@
   Instalaçao e configuraçao do cors como typagem TS:
   yarn add @types/cors --save-dev
 
+
 ##########################################
+
 
 #3 CONECTANDO AO DB
 
@@ -56,9 +60,11 @@
 
   Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
 
+
 ##########################################
 
-#4 CRIANDO MODELOS
+
+#4 CRIANDO MODELOS  (***TODO: Criar Modelo WORKOUT***)
 
   Vamos criar os modelos do MONGODB para as seguintes collections
 
@@ -76,14 +82,10 @@
 
   Tabela TREINOS:
   -Id
-  -nome: String
-  -time: number
-  -qtExercises: number
-  -description: string
-  -currentRep
-  -currentWeight
-  -stepTitle
-  -stepDescription
+  -Nome
+  -description
+  -exercices
+  -status: 
 
   USER + SUBS (RELACAO 1 - 1)
 
@@ -104,7 +106,9 @@
 
   Nome da Migration: create_tables
 
+
 ##########################################
+
 
 #5 CRIANDO ESTRUTURA
 
@@ -136,7 +140,9 @@
   -Postman
     Depois de criado o controller, services e rota lembrar de fazer uma requesiçao de TESTE sempre no Postman
 
+
 ##########################################
+
 
 #6 CADASTRANDO USUARIO 
 
@@ -150,7 +156,9 @@
 
   Files modificados: src > controllers > user + src > services > user + src > routes > User Routes
 
+
 ##########################################
+
 
 #7 LOGANDO USUARIOS NO DB
 
@@ -171,7 +179,9 @@
 
   Apos criar o service , controller e route. Devemos testar nossa rota no POSTMAN
 
+
 ##########################################
+
 
 #8 CRIANDO MIDDLEWARES
 
@@ -193,13 +203,17 @@
 
   Devemos descomentar o typeRoots do tsconfig.json e colocar o path do nosso file @types pra que o typescript entenda nossa declaraçao do FILE.
 
+
 ##########################################
+
 
 #9 ROTAS USER DETAILS
 
   Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
 
+
 ##########################################
+
 
 #10 ROTA DE UPDATE USER
 
@@ -216,6 +230,7 @@
 
 ##########################################
 
+
 #11 CRIANDO MODELOS DE SERVICOS
 
   Olhando o figma file podemos ver que listamos os modelos de cortes em um frame, cadastramos os cortes e temos limites de cadastros de cortes para users FREE.
@@ -224,6 +239,7 @@
 
 
 ##########################################
+
 
 #12 LISTANDO SERVICOS
 
@@ -240,7 +256,8 @@
 
 ##########################################
 
-#12 ATUALIZAR SERVICOS
+
+#13 ATUALIZAR SERVICOS
 
   Olhando o figma file podemos ver que editamos os modelos de cortes em um frame, lembrando que essa funcionalidade de editar é somente pra premium.
 
@@ -255,7 +272,8 @@
 
 ##########################################
 
-#13 CHECK SUBSCRIPTION
+
+#14 CHECK SUBSCRIPTION
 
   Iremos criar uma rota para checar se o user tem uma SUBSCRIPTION ativa ou nao.
 
@@ -270,7 +288,8 @@
 
 ##########################################
 
-#14 CHECK QTD. WORKS
+
+#15 CHECK QTD. WORKS
 
   Para oque exatamente ira servir essa funcionalidade, eu nao entendi. Porem pode ser util para exibir que o usuario esta com 5/10 serviços disponiveis por exemplo ou para mostrar que ele atingiu o limite de serviços...
 
@@ -288,9 +307,11 @@
 
   Fazemos o testing
 
+
 ##########################################
 
-#15 CADASTRAR NOVO SERVICO
+
+#16 CADASTRAR NOVO SERVICO
 
   No nosso FIGMA FILE podemos ver que temos um frame onde cadastramos um novo serviço, iremos criar essa funcionalidade agora...
 
@@ -302,9 +323,11 @@
 
   Por final testamos
 
+
 ##########################################
 
-#16 LISTANDO AGENDAMENTOS 
+
+#17 LISTANDO AGENDAMENTOS 
 
   No nosso FIGMA FILE podemos ver que temos um frame onde listamos os clientes do nosso agendamento, iremos criar essa funcionalidade agora...
 
@@ -316,9 +339,11 @@
 
   Agora vamos testar
 
+
 ##########################################
 
-#17 FINALIZANDO/DELETANDO SERVICO
+
+#18 FINALIZANDO/DELETANDO SERVICO
 
   Em nossos frames do FIGMA podemos ver que temos uma tela onde podemos "Finalizar um serviço apos ele ser completado"
 
@@ -329,5 +354,6 @@
   Criamos nossa rota
 
   E por final testamos
+
 
 ##########################################

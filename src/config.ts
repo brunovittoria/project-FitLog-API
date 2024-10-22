@@ -27,6 +27,10 @@ export const collectionsData = {
     name: 'Workouts',
     collection: 'workouts'
   },
+  Exercises: {
+    name: 'Exercises',
+    collection: 'exercises'
+  },
   Subscriptions: {
     name: 'Subscriptions',
     collection: 'subscriptions'
