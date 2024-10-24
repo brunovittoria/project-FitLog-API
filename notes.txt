@@ -64,11 +64,11 @@
 ##########################################
 
 
-#4 CRIANDO MODELOS  (***TODO: Criar Modelo WORKOUT***)
+#4 CRIANDO MODELOS
 
   Vamos criar os modelos do MONGODB para as seguintes collections
 
-  Tabela USER:
+  Collection USER:
   -Id
   -Nome: string
   -Email: string
@@ -80,16 +80,22 @@
 
   USER + TREINOS (RELACAO 1 - N) 1 User pode ter varios treinos
 
-  Tabela TREINOS:
+  Collection TREINOS:
   -Id
   -Nome
   -description
   -exercices
   -status: 
 
+  WORKOUTS + EXERCISES (RELACAO 1 - N) 1 Workout pode ter varios exercicios
+
+  Collection Exercises:
+  -Id
+  -
+
   USER + SUBS (RELACAO 1 - 1)
 
-  Tabela Subscription
+  Collection Subscription
 
   -id: uuid
   -status: string
@@ -98,9 +104,9 @@
 
   Agora vamos criar o modelo user em nosso schema.prisma na PASTA PRISMA
 
-  OBS: PARA IDENTIFICAR AS RELACOES NAS TABELAS BASTA OLHAR PARA O FIGMA E ENTENDER QUAIS AS RELACOES DENTRO DO APP
+  OBS: PARA IDENTIFICAR AS RELACOES NAS Collections BASTA OLHAR PARA O FIGMA E ENTENDER QUAIS AS RELACOES DENTRO DO APP
 
-  Feito os modelos devemos rodar um comando para rodar as relacoes das tabelas:
+  Feito os modelos devemos rodar um comando para rodar as relacoes das Collections:
 
   npx prisma migrate dev
 
@@ -115,6 +121,8 @@
   Iremos criar nossa estrutura de controllers e services.
   Lembre-se sempre de antes de construir alguma funcionalidade, olhar o figma file para visualizar quais funcionalidades o app pode precisar.
 
+  Criar as pastas de todos useCases e depois criar o codigo 1 por 1
+  
   -Controller (Controlador):
 
     O que é: Imagine um controlador como um maestro em uma orquestra. Ele recebe pedidos (como uma música específica) e direciona os músicos para executar as ações necessárias.
