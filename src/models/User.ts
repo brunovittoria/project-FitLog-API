@@ -17,7 +17,7 @@ export const UserSchema = z.object({
 
 // Define o tipo IUser com base no esquema do Zod, combinando com mongoose.
 // DocumentSchemaZod é uma função utilitária que integra Zod com o mongoose.
-export type IUser = z.infer<typeof UserSchema> & { _id: string }
+export type IUser = z.infer<typeof UserSchema>
 
 const SchemaModel = new Schema<IUser>(
   {

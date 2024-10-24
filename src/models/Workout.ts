@@ -19,16 +19,7 @@ export const WorkoutSchema = z.object({
   updated_at: z.date().optional()
 })
 
-export type IWorkout = z.infer<typeof WorkoutSchema> & {
-  id: string
-  userId: string
-  name: string
-  description?: string
-  status: (typeof workoutStatus)[number]
-  exercises: string[]
-  created_at?: Date
-  updated_at?: Date
-}
+export type IWorkout = z.infer<typeof WorkoutSchema>
 
 const WorkoutModelSchema = new Schema<IWorkout>(
   {
