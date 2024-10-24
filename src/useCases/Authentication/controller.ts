@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { AuthUserService } from './AuthUserService'
+import { AuthUserService } from './service'
 
 class AuthUserController {
   //Aqui basicamente pegamos dados do nosso req.body e mandamos pro nosso serviço executar a sessao de login

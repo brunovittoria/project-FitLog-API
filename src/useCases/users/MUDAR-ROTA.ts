@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express'
 
-import { CreateUserController } from './createUser/CreateUserController'
+import { CreateUserController } from './createUser/controller'
 import { AuthUserController } from './Authentication/AuthUserController'
 
 import { isAuthenticated } from '../../middlewares/isAuth'
