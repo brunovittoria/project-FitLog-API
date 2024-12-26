@@ -27,7 +27,7 @@
   Agora testamos nossas rotas e td funciona
 
 
-##########################################
+------------------------------------------
 
 
 #2 TRATANDO ERROS DA API
@@ -43,7 +43,7 @@
   yarn add @types/cors --save-dev
 
 
-##########################################
+------------------------------------------
 
 
 #3 CONECTANDO AO DB
@@ -61,7 +61,7 @@
   Mudar URL no file .env para a certa do postgreSQL e pronto conectou.
 
 
-##########################################
+------------------------------------------
 
 
 #4 CRIANDO MODELOS
@@ -113,7 +113,7 @@
   Nome da Migration: create_tables
 
 
-##########################################
+------------------------------------------
 
 
 #5 CRIANDO ESTRUTURA
@@ -149,7 +149,7 @@
     Depois de criado o controller, services e rota lembrar de fazer uma requesiçao de TESTE sempre no Postman
 
 
-##########################################
+------------------------------------------
 
 
 #6 CADASTRANDO USUARIO #TODO(PAREI AQUI)
@@ -165,7 +165,7 @@
   Files modificados: src > controllers > user + src > services > user + src > routes > User Routes
 
 
-##########################################
+------------------------------------------
 
 
 #7 LOGANDO USUARIOS NO DB
@@ -188,7 +188,7 @@
   Apos criar o service , controller e route. Devemos testar nossa rota no POSTMAN
 
 
-##########################################
+------------------------------------------
 
 
 #8 CRIANDO MIDDLEWARES
@@ -212,7 +212,7 @@
   Devemos descomentar o typeRoots do tsconfig.json e colocar o path do nosso file @types pra que o typescript entenda nossa declaraçao do FILE.
 
 
-##########################################
+------------------------------------------
 
 
 #9 ROTAS USER DETAILS
@@ -220,7 +220,7 @@
   Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
 
 
-##########################################
+------------------------------------------
 
 
 #10 ROTA DE UPDATE USER
@@ -236,7 +236,7 @@
   Por fim criamos nossa rota: router.put('/users', isAuthenticated, new UpdateUserController().handle)
 
 
-##########################################
+------------------------------------------
 
 
 #11 CRIANDO MODELOS DE SERVICOS
@@ -246,7 +246,7 @@
   Sabendo desses requisitos vamos ao codigo e criamos a pasta "works" no services que iremos criar nosso primeiro servico para criar os servicos/cortes do app.
 
 
-##########################################
+------------------------------------------
 
 
 #12 LISTANDO SERVICOS
@@ -262,7 +262,7 @@
   Agora testamos as rotas pra ver se ta tudo certo.
 
 
-##########################################
+------------------------------------------
 
 
 #13 ATUALIZAR SERVICOS
@@ -278,7 +278,7 @@
   E por ultimo agora vamos testar a rota no thunderbolt
 
 
-##########################################
+------------------------------------------
 
 
 #14 CHECK SUBSCRIPTION
@@ -294,7 +294,7 @@
   E por ultimo nao podemos esquecer de testar no thunderbolt
 
 
-##########################################
+------------------------------------------
 
 
 #15 CHECK QTD. WORKS
@@ -316,7 +316,7 @@
   Fazemos o testing
 
 
-##########################################
+------------------------------------------
 
 
 #16 CADASTRAR NOVO SERVICO
@@ -332,7 +332,7 @@
   Por final testamos
 
 
-##########################################
+------------------------------------------
 
 
 #17 LISTANDO AGENDAMENTOS 
@@ -348,7 +348,7 @@
   Agora vamos testar
 
 
-##########################################
+------------------------------------------
 
 
 #18 FINALIZANDO/DELETANDO SERVICO
@@ -364,4 +364,4 @@
   E por final testamos
 
 
-##########################################
+------------------------------------------

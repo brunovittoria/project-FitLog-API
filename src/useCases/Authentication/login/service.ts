@@ -1,6 +1,7 @@
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import { UserModel } from '../../models/User'
+import { UserModel } from '../../../models/User'
+import { SubscriptionModel } from '../../../models/Subscription'
 
 interface AuthUserRequest {
   email: string
@@ -39,16 +40,19 @@ class AuthUserService {
       }
     )
 
+    // Busca a assinatura do usuário
+    const subscription = await SubscriptionModel.findOne({ userId: user.id })
+
     // Retorna os dados do usuário e as informações de assinatura
     return {
       id: user.id,
       name: user.name,
       email: user.email,
       token: token,
-      subscriptions: user.subscriptions
+      subscriptions: subscription
         ? {
-            id: user.subscriptions.id,
-            status: user.subscriptions.status
+            id: subscription.id,
+            status: subscription.status
           }
         : null
     }
