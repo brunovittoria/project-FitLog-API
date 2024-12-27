@@ -152,7 +152,7 @@
 ------------------------------------------
 
 
-#6 CADASTRANDO USUARIO #TODO(PAREI AQUI)
+#6 CADASTRANDO USUARIO 
 
   Agora iremos cadastrar os usuarios quando eles fizerem o registro em nosso form la no nosso DB
 
@@ -168,7 +168,7 @@
 ------------------------------------------
 
 
-#7 LOGANDO USUARIOS NO DB
+#7 LOGANDO USUARIOS NO DB #TODO(PAREI AQUI)
 
   Criamos un novo file que ira controlar quando o usuario se logar, AuthUserController.ts
   E o servico que ira tratar do login no file AuthUserService.ts
