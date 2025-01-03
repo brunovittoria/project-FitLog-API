@@ -156,12 +156,6 @@
 
   Agora iremos cadastrar os usuarios quando eles fizerem o registro em nosso form la no nosso DB
 
-  Para isso iremos chamar o nosso prisma client no services de USER (Que é ele que recebera os dados do controller e ira executar alguma açao.) e criar nossas verificacoes para criar o user.
-
-  Depois devemos usar o bcryptjs para encryptar a password.
-
-  Depois de fazer o hash da pwd e criar o user, iremos fazer um teste no nosso postman.
-
   Files modificados: src > controllers > user + src > services > user + src > routes > User Routes
 
 

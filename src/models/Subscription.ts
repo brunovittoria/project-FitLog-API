@@ -1,7 +1,7 @@
 import { Schema, Types } from 'mongoose'
 import { z } from 'zod'
 import { fitLogdbConnect } from '../shared'
-import { collectionsData } from '@/config'
+import { collectionsData } from '../config'
 
 const subscriptionStatus = ['active', 'canceled', 'expired'] as const
 

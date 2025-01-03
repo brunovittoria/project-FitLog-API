@@ -1,10 +1,14 @@
 import { createConnection } from 'mongoose'
+import { MONGO_URI } from '../config';
 
-if (!process.env.MONGO_URI) {
+console.log('Current working directory:', process.cwd());
+
+
+if (!MONGO_URI) {
   throw new Error('MONGO_URI is not defined in the environment variables');
 }
 
-export const fitLogdbConnect = createConnection(process.env.MONGO_URI, {
+export const fitLogdbConnect = createConnection(MONGO_URI, {
   maxPoolSize: 10
 })
 
