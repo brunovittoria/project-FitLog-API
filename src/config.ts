@@ -16,7 +16,7 @@ export const collectionsData = {
     collection: 'exercises'
   },
   Subscriptions: {
-    name: 'Subscriptions',
+    name: 'Subscription',
     collection: 'subscriptions'
   },
   Users: {

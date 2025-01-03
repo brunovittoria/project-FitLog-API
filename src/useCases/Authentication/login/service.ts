@@ -11,7 +11,7 @@ interface AuthUserRequest {
 class AuthUserService {
   async execute({ email, password }: AuthUserRequest) {
     // Busca o usuário no MongoDB através do modelo do Mongoose.
-    const user = await UserModel.findOne({ email }).populate('subscriptions')
+    const user = await UserModel.findOne({ email }).populate('subscriptionId')
 
     if (!user) {
       throw new Error('Email/Password Incorrect')
