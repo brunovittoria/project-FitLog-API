@@ -2,6 +2,7 @@ import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { UserModel } from '../../../models/User'
 import { SubscriptionModel } from '../../../models/Subscription'
+import { validateLoginUserBody } from './validation'
 
 interface AuthUserRequest {
   email: string
@@ -10,6 +11,9 @@ interface AuthUserRequest {
 
 class AuthUserService {
   async execute({ email, password }: AuthUserRequest) {
+    // Valida os dados de entrada
+    validateLoginUserBody.parse({ email, password })
+
     // Busca o usuário no MongoDB através do modelo do Mongoose.
     const user = await UserModel.findOne({ email }).populate('subscriptionId')
 

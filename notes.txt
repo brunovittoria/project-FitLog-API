@@ -152,7 +152,7 @@
 ------------------------------------------
 
 
-#6 CADASTRANDO USUARIO #TODO(PAREI AQUI) (TESTAR NO POSTMAN!!)
+#6 CADASTRANDO USUARIO
 
   Agora iremos cadastrar os usuarios quando eles fizerem o registro em nosso form la no nosso DB
 
@@ -162,7 +162,7 @@
 ------------------------------------------
 
 
-#7 LOGANDO USUARIOS NO DB #TODO(PAREI AQUI)
+#7 LOGANDO USUARIOS NO DB 
 
   Criamos un novo file que ira controlar quando o usuario se logar, AuthUserController.ts
   E o servico que ira tratar do login no file AuthUserService.ts
@@ -208,76 +208,9 @@
 
 ------------------------------------------
 
+#9 USECASE CHECK SUBSCRIPTION
 
-#9 ROTAS USER DETAILS
-
-  Aqui criamos a nossa rota onde ira pegar todos os detalhes do usuario e utilizamos o middleware isAuth pra verificar se o usuario esta logado pra poder acessar, se nao estiver, sera barrado da rota.
-
-
-------------------------------------------
-
-
-#10 ROTA DE UPDATE USER
-
-  Olhando o figma file podemos ver que temos uma page "Minha Conta" que o usuario pode mudar suas informaçoes de contato.
-
-  Aqui criamos uma rota onde iremos fazer uma atualizacao dos dados do usuario.
-
-  -Primeiro começamos criando o service: UpdateUserService.ts
-
-  Criado esse file devemos criar o controller: UpdateUserController.ts
-
-  Por fim criamos nossa rota: router.put('/users', isAuthenticated, new UpdateUserController().handle)
-
-
-------------------------------------------
-
-
-#11 CRIANDO MODELOS DE SERVICOS
-
-  Olhando o figma file podemos ver que listamos os modelos de cortes em um frame, cadastramos os cortes e temos limites de cadastros de cortes para users FREE.
-
-  Sabendo desses requisitos vamos ao codigo e criamos a pasta "works" no services que iremos criar nosso primeiro servico para criar os servicos/cortes do app.
-
-
-------------------------------------------
-
-
-#12 LISTANDO SERVICOS
-
-  Olhando o figma file podemos ver que listamos os modelos de cortes em um frame.
-
-  Sabendo desses requisitos vamos ao codigo e criamos dentro da pasta "works" no services o file: ListWorksService.ts
-
-  Tendo construido nosso service criamos o controller: ListWorksController
-
-  Agora criamos a nossa rota para a listagem dos works.
-
-  Agora testamos as rotas pra ver se ta tudo certo.
-
-
-------------------------------------------
-
-
-#13 ATUALIZAR SERVICOS
-
-  Olhando o figma file podemos ver que editamos os modelos de cortes em um frame, lembrando que essa funcionalidade de editar é somente pra premium.
-
-  Criamos o service: UpdateWorksService.ts
-
-  E agora criamos o controller: UpdateWorksController.ts
-
-  Criamos nossa rota de update do works
-
-  E por ultimo agora vamos testar a rota no thunderbolt
-
-
-------------------------------------------
-
-
-#14 CHECK SUBSCRIPTION
-
-  Iremos criar uma rota para checar se o user tem uma SUBSCRIPTION ativa ou nao.
+  Iremos criar um useCase para checar se o user tem uma SUBSCRIPTION ativa ou nao.
 
   Começamos criando o file CheckSubsService.ts
 
@@ -285,77 +218,17 @@
 
   Criamos nossa rota
 
-  E por ultimo nao podemos esquecer de testar no thunderbolt
+  E por ultimo nao podemos esquecer de testar no Postman
 
 
 ------------------------------------------
 
+#10 USECASES USER
 
-#15 CHECK QTD. WORKS
+#11 USECASES EXERCISES
 
-  Para oque exatamente ira servir essa funcionalidade, eu nao entendi. Porem pode ser util para exibir que o usuario esta com 5/10 serviços disponiveis por exemplo ou para mostrar que ele atingiu o limite de serviços...
+#12 USECASES WORKOUTS
 
-  Criamos o Service: CountWorksService.ts
-  Criamos o Controller: CountWorksController.ts
-  Criamos a Route para a contagem
-
-  Fazemos o testing
-
-  Agora criamos outra estrutura para detalhar informacoes somente de um serviço em especifico.
-
-  Criamos o Service: DetailWorkService.ts
-  Criamos o Controller: DetailWorkController.ts
-  Criamos a Route para os detalhes
-
-  Fazemos o testing
+#13 USECASES SUBSCRIPTIONS
 
 
-------------------------------------------
-
-
-#16 CADASTRAR NOVO SERVICO
-
-  No nosso FIGMA FILE podemos ver que temos um frame onde cadastramos um novo serviço, iremos criar essa funcionalidade agora...
-
-  Criamos em nosso service a pasta schedule e o file: NewScheduleService.ts
-
-  Criamos o nosso controller NewScheduleController.ts
-
-  Criamos nossa rota schedule
-
-  Por final testamos
-
-
-------------------------------------------
-
-
-#17 LISTANDO AGENDAMENTOS 
-
-  No nosso FIGMA FILE podemos ver que temos um frame onde listamos os clientes do nosso agendamento, iremos criar essa funcionalidade agora...
-
-  Criamos em nosso service a dentro da pasta schedule o file: ListScheduleService.ts
-
-  Criamos o controller ListScheduleController.ts
-
-  Criamos a rota para listar todos os agendamentos
-
-  Agora vamos testar
-
-
-------------------------------------------
-
-
-#18 FINALIZANDO/DELETANDO SERVICO
-
-  Em nossos frames do FIGMA podemos ver que temos uma tela onde podemos "Finalizar um serviço apos ele ser completado"
-
-  Criamos o service: FinishScheduleService.ts
-
-  Criamos o controler: FinishScheduleController.ts
-
-  Criamos nossa rota
-
-  E por final testamos
-
-
-------------------------------------------

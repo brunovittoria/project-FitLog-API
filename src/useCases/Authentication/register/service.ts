@@ -1,6 +1,7 @@
 import { hash } from 'bcryptjs'
 import { UserModel } from '../../../models/User'
 import { v4 as uuidv4 } from 'uuid'
+import { validateRegisterUserBody } from './validation'
 
 interface UserRequest {
   name: string
@@ -10,6 +11,9 @@ interface UserRequest {
 
 class CreateUserService {
   async execute({ name, email, password }: UserRequest) {
+    // Valida os dados de entrada
+    validateRegisterUserBody.parse({ name, email, password })
+
     if (!email) {
       throw new Error('Email Incorrect!')
     }
