@@ -2,7 +2,7 @@ import { Schema } from 'mongoose'
 import { z } from 'zod'
 import { v4 as uuidv4 } from 'uuid'
 import { fitLogdbConnect, setDefaultSettingsSchema } from '../shared'
-import { collectionsData } from '../config'
+import { collectionsData } from '../utils/config'
 
 const userPermissions = ['user', 'admin'] as const
 

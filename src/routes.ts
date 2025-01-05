@@ -4,10 +4,17 @@ import { isAuthenticated } from './middlewares';
 import { AuthUserController } from './useCases/Authentication/login/controller';
 import { getProfileController } from './useCases/users/getOneUser/controller';
 import { CreateUserController } from './useCases/Authentication/register/controller';
+import { CheckSubsController } from './useCases/subscriptions/statusSubscription/controller';
+import { SubsCreateController } from './useCases/subscriptions/createSubscription/controller';
+
 const router = Router();
 
 const authUserController = new AuthUserController();
 const createUserController = new CreateUserController();
+const checkSubsController = new CheckSubsController();
+const subsCreateController = new SubsCreateController();
+
+// ---- ROTAS USER ---- //
 
 /**
  * Represents a RegisterPostRequestBody object
@@ -85,6 +92,46 @@ router.post('/login', endpoint(authUserController.handle.bind(authUserController
  */
 
 router.get('/profile', isAuthenticated, endpoint(getProfileController));
+
+// ---- ROTAS SUBSCRIPTION ---- //
+
+/**
+ * Represents a SubsCreatePostRequestBody object
+ * @typedef {object} SubsCreatePostRequestBody
+ * @property {string} user_id - User Id
+ */
+
+/**
+ * POST /Subscription Create
+ * @tags Subscription
+ * @security Bearer
+ * @param {SubsCreatePostRequestBody} request.body.required
+ * @return {AcessTokenResponse} 201 - success response
+ * @return {Error} 500 - error response
+ * @return {Error} 401 - Invalid Credentials
+ */
+
+router.post('/subcription/create', isAuthenticated , endpoint(subsCreateController.handle.bind(subsCreateController)));
+
+/**
+ * Represents a SubsStatusGetRequestBody object
+ * @typedef {object} SubsStatusGetRequestBody
+ * @property {string} user_id - User Id
+ */
+
+/**
+ * GET /Subscription Status
+ * @tags Subscription
+ * @security Bearer
+ * @param {SubsStatusGetRequestBody} request.body.required
+ * @return {AcessTokenResponse} 201 - success response
+ * @return {Error} 500 - error response
+ * @return {Error} 401 - Invalid Credentials
+ */
+
+router.post('/subcription/status', isAuthenticated , endpoint(checkSubsController.handle.bind(checkSubsController)));
+
+
 
 export default router;
 

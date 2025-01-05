@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verify } from 'jsonwebtoken'
-import { JWT_SECRET } from '../config'
+import { JWT_SECRET } from '../utils/config'
 
 //Este Middleware ira verificar e comparar o token fornecido pelo o usuario na sessao de login
 

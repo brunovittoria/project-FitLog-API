@@ -1,5 +1,5 @@
 import { createConnection } from 'mongoose'
-import { MONGO_URI } from '../config';
+import { MONGO_URI } from '../utils/config';
 
 console.log('Current working directory:', process.cwd());
 

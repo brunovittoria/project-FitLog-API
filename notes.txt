@@ -208,27 +208,83 @@
 
 ------------------------------------------
 
-#9 USECASE CHECK SUBSCRIPTION
 
-  Iremos criar um useCase para checar se o user tem uma SUBSCRIPTION ativa ou nao.
+#9 USECASES USER #TODO PAREI AQUI!
 
-  Começamos criando o file CheckSubsService.ts
+  01 - CRIAR USER
 
-  E agora criamos o controller: CheckSubsController.ts
+    Ja fizemos esse useCase no ponto #6.
 
-  Criamos nossa rota
+  02 - GETONE USER
 
-  E por ultimo nao podemos esquecer de testar no Postman
+    Iremos criar um useCase para pegar um user especifico
+
+    Dentro da pasta de getOneUser Criamos o file service.ts
+
+    E agora criamos o controller: controller.ts
+
+    Criamos nossa rota
+
+    E por ultimo nao podemos esquecer de testar no Postman
+
+
+  03 - UPDATE USER
+  
+    Iremos criar um useCase para atualizar um user especifico
+
+    Dentro da pasta de updateUser Criamos o file service.ts
+
+    E agora criamos o controller
+
+    Criamos nossa rota
+
+    E por ultimo nao podemos esquecer de testar no Postman
+
+  
+  04 - DELETE USER
+  
+    Iremos criar um useCase para deletar um user especifico
+
+    Dentro da pasta de removeUser Criamos o file service.ts
+
+    E agora criamos o controller: controller.ts
+
+    Criamos nossa rota
+
+    E por ultimo nao podemos esquecer de testar no Postman
 
 
 ------------------------------------------
 
-#10 USECASES USER
 
-#11 USECASES EXERCISES
+#10 USECASES EXERCISES
 
-#12 USECASES WORKOUTS
 
-#13 USECASES SUBSCRIPTIONS
+------------------------------------------
 
+
+#11 USECASES WORKOUTS
+
+
+------------------------------------------
+
+
+#12 USECASES SUBSCRIPTIONS (Ver VIDEO Matheus para a configuraçao correta das useCases)
+
+  01 - CRIAR SUBSCRIPTION
+
+  02 - USECASE CHECK SUBSCRIPTION
+
+    Iremos criar um useCase para checar se o user tem uma SUBSCRIPTION ativa ou nao.
+
+    Começamos criando o file CheckSubsService.ts
+
+    E agora criamos o controller: CheckSubsController.ts
+
+    Criamos nossa rota
+
+    E por ultimo nao podemos esquecer de testar no Postman
+
+
+------------------------------------------
 

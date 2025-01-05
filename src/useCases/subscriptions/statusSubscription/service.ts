@@ -1,5 +1,6 @@
 import { UserModel } from '../../../models/User'
 import { SubscriptionModel } from '../../../models/Subscription'
+import { validateStatusSubUserBody } from './validation'
 
 interface CheckSubRequest {
     user_id: string
@@ -7,6 +8,7 @@ interface CheckSubRequest {
 
 class CheckSubsService {
     async execute({ user_id }: CheckSubRequest) {
+        validateStatusSubUserBody.parse({ user_id })
         // Busca o usuário no MongoDB através do modelo do Mongoose.
         const user = await UserModel.findById(user_id)
 
