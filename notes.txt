@@ -215,7 +215,7 @@
 
     Ja fizemos esse useCase no ponto #6.
 
-  02 - GETONE USER
+  02 - GETONE USER #TODO CRIEI TUDO BASTE TESTAR NO POSTMAN
 
     Iremos criar um useCase para pegar um user especifico
 

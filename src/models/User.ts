@@ -12,7 +12,9 @@ export const UserSchema = z.object({
   email: z.string(),
   password: z.string(),
   permissions: z.enum(userPermissions),
-  subscriptionId: z.string().optional()
+  subscriptionId: z.string().optional(),
+  weight: z.number().optional(),
+  height: z.number().optional(),
 })
 
 // Define o tipo IUser com base no esquema do Zod, combinando com mongoose.
@@ -26,7 +28,9 @@ const SchemaModel = new Schema<IUser>(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     permissions: { type: String, enum: userPermissions, default: 'user' },
-    subscriptionId: { type: Schema.Types.ObjectId, ref: 'Subscription', unique: true }
+    subscriptionId: { type: Schema.Types.ObjectId, ref: 'Subscription', unique: true },
+    weight: { type: Number },
+    height: { type: Number },
   },
   {
     timestamps: true,

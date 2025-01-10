@@ -4,7 +4,10 @@
     "module": "CommonJS",
     "rootDir": ".",
     "baseUrl": "src",
-    "outDir": "dist",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "outDir": "build",
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -14,9 +17,9 @@
     "skipLibCheck": true,
     "incremental": true,
     "allowJs": true,
-    "paths": {
-      "@/*": ["*"]
-    }
-  },
-  "include": ["src", "package.json"]
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true
+  }
 }

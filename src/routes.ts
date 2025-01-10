@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { endpoint } from './middlewares/endpoint';
 import { isAuthenticated } from './middlewares';
 import { AuthUserController } from './useCases/Authentication/login/controller';
-import { getProfileController } from './useCases/users/getOneUser/controller';
+import { GetOneProfileController } from './useCases/users/getOneUserProfile/controller';
 import { CreateUserController } from './useCases/Authentication/register/controller';
 import { CheckSubsController } from './useCases/subscriptions/statusSubscription/controller';
 import { SubsCreateController } from './useCases/subscriptions/createSubscription/controller';
@@ -13,6 +13,7 @@ const authUserController = new AuthUserController();
 const createUserController = new CreateUserController();
 const checkSubsController = new CheckSubsController();
 const subsCreateController = new SubsCreateController();
+const getOneProfileController = new GetOneProfileController();
 
 // ---- ROTAS USER ---- //
 
@@ -91,7 +92,7 @@ router.post('/login', endpoint(authUserController.handle.bind(authUserController
  * @property {string} password - User Password
  */
 
-router.get('/profile', isAuthenticated, endpoint(getProfileController));
+router.get('/me', isAuthenticated, endpoint(getOneProfileController.handle.bind(getOneProfileController)));
 
 // ---- ROTAS SUBSCRIPTION ---- //
 
