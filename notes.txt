@@ -230,6 +230,7 @@
 
   03 - UPDATE USER
   
+    - Lembrar que iremos precisar adicionar nesse useCase no service o HEIGHT, WEIGHT (Ver o UserSchema Model)
     Iremos criar um useCase para atualizar um user especifico
 
     Dentro da pasta de updateUser Criamos o file service.ts

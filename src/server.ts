@@ -24,4 +24,34 @@ app.use(router);
 
 app.use(exception);
 
-app.listen(3001, () => console.log('Server is running on port 3001'));
+const startServer = async (initialPort: number) => {
+  const findAvailablePort = (port: number): Promise<number> => {
+    return new Promise((resolve, reject) => {
+      const server = app.listen(port, () => {
+        server.close();
+        resolve(port);
+      });
+
+      server.on('error', (err: any) => {
+        if (err.code === 'EADDRINUSE') {
+          // Tenta a próxima porta
+          resolve(findAvailablePort(port + 1));
+        } else {
+          reject(err);
+        }
+      });
+    });
+  };
+
+  try {
+    const port = await findAvailablePort(initialPort);
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+startServer(3001);
