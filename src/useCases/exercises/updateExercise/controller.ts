@@ -15,7 +15,7 @@ export class UpdateExerciseController {
         // Execute service
         const updatedExercise = await this.updateExerciseService.execute(validatedData)
 
-        return response.status(200).json({ message: 'Exercise updated successfully' })
+        return response.status(200).json(updatedExercise)
     }
 }
 // Instância do controller para uso nas rotas
