@@ -6,6 +6,10 @@ import { GetOneProfileController } from './useCases/users/getOneUserProfile/cont
 import { CreateUserController } from './useCases/Authentication/register/controller';
 import { CheckSubsController } from './useCases/subscriptions/statusSubscription/controller';
 import { SubsCreateController } from './useCases/subscriptions/createSubscription/controller';
+import { createExerciseController } from './useCases/exercises/createExercise/controller';
+import { getOneExerciseController, GetOneExerciseController } from './useCases/exercises/getOneExercise/controller';
+import { removeExerciseController, RemoveExerciseController } from './useCases/exercises/removeExercise/controller';
+import { updateExerciseController, UpdateExerciseController } from './useCases/exercises/updateExercise/controller';
 
 const router = Router();
 
@@ -132,7 +136,15 @@ router.post('/subcription/create', isAuthenticated , endpoint(subsCreateControll
 
 router.post('/subcription/status', isAuthenticated , endpoint(checkSubsController.handle.bind(checkSubsController)));
 
+// ---- ROTAS EXERCISES ---- //
 
+router.post('/exercises', isAuthenticated, endpoint(createExerciseController.handle.bind(createExerciseController)));
+
+router.get('/exercises/:id', isAuthenticated, endpoint(getOneExerciseController.handle.bind(GetOneExerciseController)));
+
+router.delete('/exercises/:id', isAuthenticated, endpoint(removeExerciseController.handle.bind(RemoveExerciseController)));
+
+router.put('/exercises/:id', isAuthenticated, endpoint(updateExerciseController.handle.bind(UpdateExerciseController)));
 
 export default router;
 

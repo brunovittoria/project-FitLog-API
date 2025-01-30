@@ -3,6 +3,8 @@ import { GetOneExerciseService } from './service'
 import { getOneExerciseSchema } from './validation'
 
 export class GetOneExerciseController {
+    constructor(private getOneExerciseService: GetOneExerciseService) {}
+
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params
 
@@ -10,9 +12,11 @@ export class GetOneExerciseController {
         const validatedData = getOneExerciseSchema.parse({ id })
 
         // Execute service
-        const getOneExerciseService = new GetOneExerciseService()
-        const exercise = await getOneExerciseService.execute(validatedData.id)
+        const getOneExercise = await this.getOneExerciseService.execute(validatedData.id);
 
-        return response.json(exercise)
+        return response.json(getOneExercise)
     }
 }
+export const getOneExerciseController = new GetOneExerciseController(
+    new GetOneExerciseService()
+);
