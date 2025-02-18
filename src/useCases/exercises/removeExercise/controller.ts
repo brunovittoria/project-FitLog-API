@@ -11,8 +11,7 @@ export class RemoveExerciseController {
         // Validate input
         const validatedData = removeExerciseSchema.parse({ id })
 
-        // Execute service
-        const removeExercise = await this.removeExercise.execute(validatedData.id);
+        await this.removeExercise.execute(validatedData.id)
 
         return response.status(204).send()
     }
