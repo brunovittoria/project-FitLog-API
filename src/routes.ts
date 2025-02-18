@@ -10,6 +10,12 @@ import { createExerciseController } from './useCases/exercises/createExercise/co
 import { getOneExerciseController, GetOneExerciseController } from './useCases/exercises/getOneExercise/controller';
 import { removeExerciseController, RemoveExerciseController } from './useCases/exercises/removeExercise/controller';
 import { updateExerciseController, UpdateExerciseController } from './useCases/exercises/updateExercise/controller';
+import { createWorkoutController } from './useCases/workouts/createWorkout/controller';
+import { getOneWorkoutController } from './useCases/workouts/getOneWorkout/controller';
+import { removeWorkoutController } from './useCases/workouts/removeWorkout/controller';
+import { updateWorkoutController } from './useCases/workouts/updateWorkout/controller';
+import { updateUserController } from './useCases/users/updateUser/controller';
+import { removeUserController } from './useCases/users/removeUser/controller';
 
 const router = Router();
 
@@ -98,6 +104,10 @@ router.post('/login', endpoint(authUserController.handle.bind(authUserController
 
 router.get('/me', isAuthenticated, endpoint(getOneProfileController.handle.bind(getOneProfileController)));
 
+router.put('/me', isAuthenticated, endpoint(updateUserController.handle.bind(updateUserController)));
+
+router.delete('/me', isAuthenticated, endpoint(removeUserController.handle.bind(removeUserController)));
+
 // ---- ROTAS SUBSCRIPTION ---- //
 
 /**
@@ -145,6 +155,17 @@ router.get('/exercises/:id', isAuthenticated, endpoint(getOneExerciseController.
 router.delete('/exercises/:id', isAuthenticated, endpoint(removeExerciseController.handle.bind(RemoveExerciseController)));
 
 router.put('/exercises/:id', isAuthenticated, endpoint(updateExerciseController.handle.bind(UpdateExerciseController)));
+
+// ---- ROTAS WORKOUT ---- //
+
+router.post('/workout', isAuthenticated, endpoint(createWorkoutController.handle.bind(createWorkoutController)));
+
+router.get('/workout/:id', isAuthenticated, endpoint(getOneWorkoutController.handle.bind(getOneWorkoutController)));
+
+router.delete('/workout/:id', isAuthenticated, endpoint(removeWorkoutController.handle.bind(removeWorkoutController)));
+
+router.put('/workout/:id', isAuthenticated, endpoint(updateWorkoutController.handle.bind(updateWorkoutController)));
+
 
 export default router;
 

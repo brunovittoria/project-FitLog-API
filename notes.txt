@@ -209,7 +209,7 @@
 ------------------------------------------
 
 
-#9 USECASES USER #TODO PAREI AQUI!
+#9 USECASES USERS
 
   01 - CRIAR USER
 
@@ -288,4 +288,21 @@
 
 
 ------------------------------------------
+
+
+#13 CRIAR TODAS AS COLLECTIONS NO POSTMAN DAS ROTAS
+
+
+------------------------------------------
+
+#14 FINALIZAR SWAGGER DO APP
+
+
+------------------------------------------
+
+#15 BUILDAR PROJETO
+
+
+
+FIM
 
