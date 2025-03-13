@@ -5,18 +5,25 @@ import { stripe } from '@/utils/stripe'
 import { manageSubscription } from "@/utils/manageSubs";
 
 class WebhooksController {
-    async handle(request: Request, response: Response){
-        let event: Stripe.Event = request.body; //Aqui estamos falando que vamos receber do STRIPE essa resposta em nosso BODY
-    
-        const signature = request.headers['stripe-signature'] //Pegamos a assinatura/retorno do stripe
-        let endpointSecret = 'whsec_62144c8284459cedd422e3388c7f7b46263c449f53d10e64bf40c0674eacd201'
+    async handle(request: Request, response: Response): Promise<Response> {
+        let event: Stripe.Event = request.body;
 
-        try{
-            //Agora mandamos essas informaçoes no body  para o stripe
-            event = stripe.webhooks.constructEvent(request.body,signature,endpointSecret)
+        const signature = request.headers['stripe-signature'];
+        if (!signature) {
+            return response.status(400).send('Stripe signature missing');
+        }
 
-        }catch(err){
-            return response.status(400).send(`Webhook error: ${err.message}`)
+        const endpointSecret = 'whsec_62144c8284459cedd422e3388c7f7b46263c449f53d10e64bf40c0674eacd201';
+
+        try {
+            event = stripe.webhooks.constructEvent(
+                request.body,
+                signature,
+                endpointSecret
+            );
+        } catch (err) {
+            const error = err as Error;
+            return response.status(400).send(`Webhook error: ${error.message}`);
         }
 
         switch(event.type){ //Aqui iremos tratar as varias possibilidades que o STRIPE pode nos retornar, como pgto recusado, pendente e etc...
@@ -38,9 +45,17 @@ class WebhooksController {
 
             case 'checkout.session.completed':
                 //Criar a assinatura que foi paga com sucesso
-                const checkoutSession = event.data.object as Stripe.Checkout.Session //Aqui tipamos de forma diferente
+                const checkoutSession = event.data.object as Stripe.Checkout.Session;
+                
+                if (!checkoutSession.subscription || !checkoutSession.customer) {
+                    return response.status(400).send('Missing subscription or customer information');
+                }
 
-                await manageSubscription(checkoutSession.subscription.toString(), checkoutSession.customer.toString(), true)
+                await manageSubscription(
+                    checkoutSession.subscription.toString(),
+                    checkoutSession.customer.toString(),
+                    true
+                );
                 break;
 
             case 'checkout.session.expired':
@@ -51,8 +66,7 @@ class WebhooksController {
                 console.log(`Evento desconhecido ${event.type}`)
         }
 
-        response.send() //Aqui enviamos o retorno pro FE
-
+        return response.send(); // Retorno explícito no final
     }
 }
 
