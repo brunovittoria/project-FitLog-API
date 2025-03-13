@@ -1,19 +1,24 @@
 import { Router } from 'express';
 import { endpoint } from './middlewares/endpoint';
 import { isAuthenticated } from './middlewares';
+
 import { AuthUserController } from './useCases/Authentication/login/controller';
-import { GetOneProfileController } from './useCases/users/getOneUserProfile/controller';
 import { CreateUserController } from './useCases/Authentication/register/controller';
+
 import { CheckSubsController } from './useCases/subscriptions/statusSubscription/controller';
 import { SubsCreateController } from './useCases/subscriptions/createSubscription/controller';
+
 import { createExerciseController } from './useCases/exercises/createExercise/controller';
 import { getOneExerciseController, GetOneExerciseController } from './useCases/exercises/getOneExercise/controller';
 import { removeExerciseController, RemoveExerciseController } from './useCases/exercises/removeExercise/controller';
 import { updateExerciseController, UpdateExerciseController } from './useCases/exercises/updateExercise/controller';
+
 import { createWorkoutController } from './useCases/workouts/createWorkout/controller';
 import { getOneWorkoutController } from './useCases/workouts/getOneWorkout/controller';
 import { removeWorkoutController } from './useCases/workouts/removeWorkout/controller';
 import { updateWorkoutController } from './useCases/workouts/updateWorkout/controller';
+
+import { GetOneProfileController } from './useCases/users/getOneUserProfile/controller';
 import { updateUserController } from './useCases/users/updateUser/controller';
 import { removeUserController } from './useCases/users/removeUser/controller';
 
