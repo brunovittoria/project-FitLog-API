@@ -4,5 +4,4 @@ export const validateRegisterUserBody = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string().min(8),
-  phone: z.string()
 });

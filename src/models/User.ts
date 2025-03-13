@@ -28,7 +28,7 @@ const SchemaModel = new Schema<IUser>(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     permissions: { type: String, enum: userPermissions, default: 'user' },
-    subscriptionId: { type: Schema.Types.ObjectId, ref: 'Subscription', unique: true },
+    subscriptionId: { type: Schema.Types.ObjectId, ref: 'Subscription' },
     weight: { type: Number },
     height: { type: Number },
   },
