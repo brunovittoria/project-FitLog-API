@@ -6,7 +6,7 @@ export class RemoveUserController {
     constructor(private removeUserService: RemoveUserService) {}
     
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.params
+        const id = request.user_id; // Pegando o ID do usuário autenticado
 
         // Validate input
         const validatedData = removeUserSchema.parse({ id })
