@@ -7,7 +7,8 @@ interface userProfileRequest {
 class GetOneUserProfileService {
 
   async execute({ user_id }: userProfileRequest) {
-    const userProfile = await UserModel.findById(user_id).select('id name email weight height permissions subscriptionId')
+    const userProfile = await UserModel.findOne({ id: user_id })
+      .select('id name email weight height permissions subscriptionId')
     
     if (!userProfile) {
       throw new Error('User not found')
