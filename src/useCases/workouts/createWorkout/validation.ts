@@ -1,10 +1,7 @@
 import { z } from 'zod';
-import { Types } from 'mongoose';
 
 export const createWorkoutSchema = z.object({
-    userId: z.string().refine(val => Types.ObjectId.isValid(val), {
-        message: 'Invalid user ID format'
-    }),
+    userId: z.string(),
     name: z.string().min(1, 'Workout name is required'),
     description: z.string().optional(),
     status: z.enum(['active', 'inactive'], {
