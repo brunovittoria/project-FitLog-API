@@ -11,7 +11,10 @@ export class UpdateUserService {
 
         Object.assign(user, data)
         await user.save()
-
-        return user
+        
+        // Retorna apenas os campos desejados
+        return UserModel.findOne({ id: data.id })
+        .select('-_id id name email permissions weight height')
+        .lean()    
     }
 }
