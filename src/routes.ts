@@ -21,6 +21,7 @@ import { updateWorkoutController } from './useCases/workouts/updateWorkout/contr
 import { GetOneProfileController } from './useCases/users/getOneUserProfile/controller';
 import { updateUserController } from './useCases/users/updateUser/controller';
 import { removeUserController } from './useCases/users/removeUser/controller';
+import { getAllWorkoutsController } from './useCases/workouts/getAllWorkouts/controller';
 
 const router = Router();
 
@@ -164,6 +165,8 @@ router.put('/exercises/:id', isAuthenticated, endpoint(updateExerciseController.
 // ---- ROTAS WORKOUT ---- //
 
 router.post('/workout', isAuthenticated, endpoint(createWorkoutController.handle.bind(createWorkoutController)));
+
+router.get('/workouts', isAuthenticated, endpoint(getAllWorkoutsController.handle.bind(getAllWorkoutsController)))
 
 router.get('/workout/:id', isAuthenticated, endpoint(getOneWorkoutController.handle.bind(getOneWorkoutController)));
 
