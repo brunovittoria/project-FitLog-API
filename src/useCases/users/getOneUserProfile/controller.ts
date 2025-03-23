@@ -1,17 +1,19 @@
 import { Request, Response } from 'express'
 import { GetOneUserProfileService } from './service';
 
-class GetOneProfileController {
+export class GetOneProfileController {
+  constructor(private getOneProfileService: GetOneUserProfileService) {}
+  
   async handle(request: Request, response: Response) {
     
     const user_id = request.user_id //Pegamos o userId do FE
 
-    const getOneUserProfileService = new GetOneUserProfileService()
-
-    const userProfile = await getOneUserProfileService.execute({ user_id })
+    const userProfile = await this.getOneProfileService.execute({ user_id })
 
     return response.json(userProfile)
   }
 }
 
-export { GetOneProfileController } 
+export const getOneProfileController = new GetOneProfileController(
+  new GetOneUserProfileService()
+) 

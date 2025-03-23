@@ -1,13 +1,13 @@
 import { Request, Response } from 'express'
 import { AuthUserService } from './service'
 
-class AuthUserController {
+export class AuthUserController {
+  constructor(private authUserService: AuthUserService) {}
+
   async handle(request: Request, response: Response) {
     const { email, password } = request.body
 
-    const authUserService = new AuthUserService()
-
-    const session = await authUserService.execute({
+    const session = await this.authUserService.execute({
       email,
       password
     })
@@ -16,4 +16,7 @@ class AuthUserController {
   }
 }
 
-export { AuthUserController }
+// Exporta a instância já criada
+export const authUserController = new AuthUserController(
+  new AuthUserService()
+)

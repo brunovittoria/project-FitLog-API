@@ -2,34 +2,28 @@ import { Router } from 'express';
 import { endpoint } from './middlewares/endpoint';
 import { isAuthenticated } from './middlewares';
 
-import { AuthUserController } from './useCases/Authentication/login/controller';
-import { CreateUserController } from './useCases/Authentication/register/controller';
+import { authUserController } from './useCases/Authentication/login/controller';
+import { createUserController } from './useCases/Authentication/register/controller';
 
-import { CheckSubsController } from './useCases/subscriptions/statusSubscription/controller';
-import { SubsCreateController } from './useCases/subscriptions/createSubscription/controller';
+import { checkSubsController } from './useCases/subscriptions/statusSubscription/controller';
+import { subsCreateController } from './useCases/subscriptions/createSubscription/controller';
 
 import { createExerciseController } from './useCases/exercises/createExercise/controller';
-import { getOneExerciseController, GetOneExerciseController } from './useCases/exercises/getOneExercise/controller';
-import { removeExerciseController, RemoveExerciseController } from './useCases/exercises/removeExercise/controller';
-import { updateExerciseController, UpdateExerciseController } from './useCases/exercises/updateExercise/controller';
+import { getOneExerciseController } from './useCases/exercises/getOneExercise/controller';
+import { removeExerciseController } from './useCases/exercises/removeExercise/controller';
+import { updateExerciseController } from './useCases/exercises/updateExercise/controller';
 
 import { createWorkoutController } from './useCases/workouts/createWorkout/controller';
 import { getOneWorkoutController } from './useCases/workouts/getOneWorkout/controller';
 import { removeWorkoutController } from './useCases/workouts/removeWorkout/controller';
 import { updateWorkoutController } from './useCases/workouts/updateWorkout/controller';
 
-import { GetOneProfileController } from './useCases/users/getOneUserProfile/controller';
+import { getOneProfileController } from './useCases/users/getOneUserProfile/controller';
 import { updateUserController } from './useCases/users/updateUser/controller';
 import { removeUserController } from './useCases/users/removeUser/controller';
 import { getAllWorkoutsController } from './useCases/workouts/getAllWorkouts/controller';
 
 const router = Router();
-
-const authUserController = new AuthUserController();
-const createUserController = new CreateUserController();
-const checkSubsController = new CheckSubsController();
-const subsCreateController = new SubsCreateController();
-const getOneProfileController = new GetOneProfileController();
 
 // ---- ROTAS USER ---- //
 
@@ -154,13 +148,13 @@ router.post('/subcription/status', isAuthenticated , endpoint(checkSubsControlle
 
 // ---- ROTAS EXERCISES ---- //
 
-router.post('/exercises', isAuthenticated, endpoint(createExerciseController.handle.bind(createExerciseController)));
+router.post('/exercise', isAuthenticated, endpoint(createExerciseController.handle.bind(createExerciseController)));
 
-router.get('/exercises/:id', isAuthenticated, endpoint(getOneExerciseController.handle.bind(GetOneExerciseController)));
+router.get('/exercise/:id', isAuthenticated, endpoint(getOneExerciseController.handle.bind(getOneExerciseController)));
 
-router.delete('/exercises/:id', isAuthenticated, endpoint(removeExerciseController.handle.bind(RemoveExerciseController)));
+router.delete('/exercise/:id', isAuthenticated, endpoint(removeExerciseController.handle.bind(removeExerciseController)));
 
-router.put('/exercises/:id', isAuthenticated, endpoint(updateExerciseController.handle.bind(UpdateExerciseController)));
+router.put('/exercise/:id', isAuthenticated, endpoint(updateExerciseController.handle.bind(updateExerciseController)));
 
 // ---- ROTAS WORKOUT ---- //
 
