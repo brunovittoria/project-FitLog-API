@@ -22,6 +22,7 @@ import { getOneProfileController } from './useCases/users/getOneUserProfile/cont
 import { updateUserController } from './useCases/users/updateUser/controller';
 import { removeUserController } from './useCases/users/removeUser/controller';
 import { getAllWorkoutsController } from './useCases/workouts/getAllWorkouts/controller';
+import { getAllExercisesController } from './useCases/exercises/getAllExercises/controller';
 
 const router = Router();
 
@@ -126,7 +127,7 @@ router.delete('/me', isAuthenticated, endpoint(removeUserController.handle.bind(
  * @return {Error} 401 - Invalid Credentials
  */
 
-router.post('/subcription/create', isAuthenticated , endpoint(subsCreateController.handle.bind(subsCreateController)));
+router.post('/subcription/create', isAuthenticated, endpoint(subsCreateController.handle.bind(subsCreateController)));
 
 /**
  * Represents a SubsStatusGetRequestBody object
@@ -144,11 +145,13 @@ router.post('/subcription/create', isAuthenticated , endpoint(subsCreateControll
  * @return {Error} 401 - Invalid Credentials
  */
 
-router.post('/subcription/status', isAuthenticated , endpoint(checkSubsController.handle.bind(checkSubsController)));
+router.post('/subcription/status', isAuthenticated, endpoint(checkSubsController.handle.bind(checkSubsController)));
 
 // ---- ROTAS EXERCISES ---- //
 
 router.post('/exercise', isAuthenticated, endpoint(createExerciseController.handle.bind(createExerciseController)));
+
+router.get('/exercises', isAuthenticated, endpoint(getAllExercisesController.handle.bind(getAllExercisesController)));
 
 router.get('/exercise/:id', isAuthenticated, endpoint(getOneExerciseController.handle.bind(getOneExerciseController)));
 
