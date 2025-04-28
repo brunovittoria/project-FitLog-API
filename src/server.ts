@@ -7,46 +7,46 @@ import expressJSDocSwagger from 'express-jsdoc-swagger';
 import { swaggerOptions } from './swaggerOptions';
 
 const app = e();
+const DEFAULT_PORT = process.env.PORT ? parseInt(process.env.PORT) : 8000;
 
 expressJSDocSwagger(app)(swaggerOptions);
 app.use(e.json());
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // URL do FE
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true
   })
 );
 
 app.use(morgan('combined'));
-
 app.use(router);
-
 app.use(exception);
 
-const startServer = async (initialPort: number) => {
-  const findAvailablePort = (port: number): Promise<number> => {
-    return new Promise((resolve, reject) => {
-      const server = app.listen(port, () => {
-        server.close();
-        resolve(port);
-      });
-
-      server.on('error', (err: any) => {
-        if (err.code === 'EADDRINUSE') {
-          // Tenta a próxima porta
-          resolve(findAvailablePort(port + 1));
-        } else {
-          reject(err);
-        }
-      });
+const findAvailablePort = (port: number): Promise<number> => {
+  return new Promise((resolve, reject) => {
+    const server = app.listen(port, () => {
+      server.close();
+      resolve(port);
     });
-  };
 
+    server.on('error', (err: any) => {
+      if (err.code === 'EADDRINUSE') {
+        console.log(`Port ${port} is in use, trying ${port + 1}`);
+        resolve(findAvailablePort(port + 1));
+      } else {
+        reject(err);
+      }
+    });
+  });
+};
+
+const startServer = async () => {
   try {
-    const port = await findAvailablePort(initialPort);
+    const port = await findAvailablePort(DEFAULT_PORT);
     app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+      console.log(`🚀 Server is running on port ${port}`);
+      console.log(`📚 API Documentation available at http://localhost:${port}/api-docs`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);
@@ -54,4 +54,4 @@ const startServer = async (initialPort: number) => {
   }
 };
 
-startServer(3001);
+startServer();
