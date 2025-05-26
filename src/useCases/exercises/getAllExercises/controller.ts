@@ -3,15 +3,21 @@ import { GetAllExercisesService } from './service';
 import { getAllExercisesSchema } from './validation';
 
 export class GetAllExercisesController {
-    constructor(private getAllExercisesService: GetAllExercisesService) {}
-
+    constructor(private getAllExercisesService: GetAllExercisesService) { }
+    /**
+     * Handles the request to get all exercises for a user.
+     * @param {Request} request - The request object containing user information.
+     * @param {Response} response - The response object to send the result.
+     * @throws {Error} If the user is not authenticated or if validation fails.
+     * @returns {Response} The response with the list of exercises.
+     */
     async handle(request: Request, response: Response) {
         if (!request.user) {
             throw new Error('User not authenticated');
         }
 
-        const validationResult = getAllExercisesSchema.safeParse({ 
-            userId: request.user.id 
+        const validationResult = getAllExercisesSchema.safeParse({
+            userId: request.user.id
         });
 
         if (!validationResult.success) {
