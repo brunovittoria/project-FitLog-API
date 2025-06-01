@@ -12,12 +12,9 @@ export class GetAllExercisesController {
      * @returns {Response} The response with the list of exercises.
      */
     async handle(request: Request, response: Response) {
-        if (!request.user) {
-            throw new Error('User not authenticated');
-        }
 
         const validationResult = getAllExercisesSchema.safeParse({
-            userId: request.user.id
+            userId: request.user_id
         });
 
         if (!validationResult.success) {
