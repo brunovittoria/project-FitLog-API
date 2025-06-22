@@ -9,17 +9,23 @@ export class UpdateExerciseService {
             throw new Error('Exercise not found')
         }
 
-        // Atualiza apenas os campos fornecidos
-        Object.assign(exercise, {
-            name: data.name || exercise.name,
-            type: data.type || exercise.type,
-            reps: data.reps || exercise.reps,
-            sets: data.sets || exercise.sets,
-            weight: data.weight || exercise.weight,
-            duration: data.duration || exercise.duration
-        })
+        if (data.weight !== undefined && data.weight !== null) {
+            exercise.lastWeight = exercise.weight;
+            exercise.weight = data.weight;
+            if (!exercise.personalBest || data.weight > exercise.personalBest) {
+                exercise.personalBest = data.weight;
+            }
+        }
 
+        if (data.name) exercise.name = data.name;
+        if (data.category) exercise.category = data.category;
+        if (data.equipment) exercise.equipment = data.equipment;
+        if (data.type) exercise.type = data.type;
+        if (data.reps) exercise.reps = data.reps;
+        if (data.sets) exercise.sets = data.sets;
+        if (data.duration) exercise.duration = data.duration;
+        
         await exercise.save()
-        return exercise
+        return exercise.toObject()
     }
 }

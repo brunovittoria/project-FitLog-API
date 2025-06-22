@@ -10,10 +10,15 @@ export class CreateExerciseService {
             throw new Error('Workout not found');
         }
 
-        const exercise = await ExerciseModel.create({
+        const exerciseToCreate = {
             ...data,
-            workoutId: workout._id
-        });
+            workoutId: workout._id,
+            lastWeight: null,
+            personalBest: data.weight || null,
+        };
+
+        const exercise = await ExerciseModel.create(exerciseToCreate);
+        
         return exercise.toObject();
     }
 }
