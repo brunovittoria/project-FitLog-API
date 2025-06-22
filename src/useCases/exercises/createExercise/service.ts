@@ -15,6 +15,9 @@ export class CreateExerciseService {
             workoutId: workout._id,
             lastWeight: null,
             personalBest: data.weight || null,
+            progressData: data.weight
+                ? [{ date: new Date().toISOString(), weight: data.weight }]
+                : [],
         };
 
         const exercise = await ExerciseModel.create(exerciseToCreate);

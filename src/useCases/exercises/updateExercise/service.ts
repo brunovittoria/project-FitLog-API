@@ -15,6 +15,14 @@ export class UpdateExerciseService {
             if (!exercise.personalBest || data.weight > exercise.personalBest) {
                 exercise.personalBest = data.weight;
             }
+            
+            if (!exercise.progressData) {
+                exercise.progressData = [];
+            }
+            exercise.progressData.push({
+                date: new Date().toISOString(),
+                weight: data.weight,
+            });
         }
 
         if (data.name) exercise.name = data.name;
