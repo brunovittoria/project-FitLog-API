@@ -12,16 +12,13 @@ export class GetAllExercisesService {
         }
 
         // Busca todos os workouts do usuário
-        const workouts = await WorkoutModel.find({ userId: user.id });
+        const workouts = await WorkoutModel.find({ userId: user.id }).select('_id');
         
-        // Extrai os IDs dos exercícios de todos os workouts
-        const exerciseIds = workouts.reduce((ids: string[], workout) => {
-            return [...ids, ...workout.exercises];
-        }, []);
+        const workoutIds = workouts.map(workout => workout._id);
 
-        // Busca todos os exercícios
+        // Busca todos os exercícios que pertencem a esses workouts
         const exercises = await ExerciseModel.find({
-            _id: { $in: exerciseIds }
+            workoutId: { $in: workoutIds }
         }).sort({ created_at: -1 }); // Ordena do mais recente para o mais antigo
 
         return exercises.map(exercise => exercise.toObject());
