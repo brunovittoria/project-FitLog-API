@@ -22,6 +22,8 @@ export class UpdateExerciseService {
             exercise.progressData.push({
                 date: new Date().toISOString(),
                 weight: data.weight,
+                reps: data.reps,
+                sets: data.sets,
             });
         }
 

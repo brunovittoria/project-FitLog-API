@@ -15,8 +15,13 @@ export class CreateExerciseService {
             workoutId: workout._id,
             lastWeight: null,
             personalBest: data.weight || null,
-            progressData: data.weight
-                ? [{ date: new Date().toISOString(), weight: data.weight }]
+            progressData: (data.weight || data.reps || data.sets)
+                ? [{
+                    date: new Date().toISOString(),
+                    weight: data.weight || 0,
+                    reps: data.reps,
+                    sets: data.sets
+                }]
                 : [],
         };
 

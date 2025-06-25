@@ -18,7 +18,9 @@ export const createExerciseSchema = z.object({
     duration: z.number().nullable().optional(),
     progressData: z.array(z.object({
         date: z.string(),
-        weight: z.number()
+        weight: z.number(),
+        reps: z.number().optional(),
+        sets: z.number().optional(),
     })).optional()
 });
 

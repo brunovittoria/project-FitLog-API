@@ -23,7 +23,9 @@ export const ExerciseSchema = z.object({
   duration: z.number().optional(),
   progressData: z.array(z.object({
     date: z.string(),
-    weight: z.number()
+    weight: z.number(),
+    reps: z.number().optional(),
+    sets: z.number().optional(),
   })).optional(),
   created_at: z.date().optional(),
   updated_at: z.date().optional()
@@ -45,6 +47,8 @@ export type IExercise = {
   progressData?: Array<{
     date: string
     weight: number
+    reps?: number
+    sets?: number
   }>
   created_at?: Date
   updated_at?: Date
@@ -66,10 +70,12 @@ const ExerciseModelSchema = new Schema<IExercise>(
     duration: { type: Number, default: null },
     progressData: [{
       date: { type: String, required: true },
-      weight: { type: Number, required: true }
+      weight: { type: Number, required: true },
+      reps: { type: Number },
+      sets: { type: Number }
     }],
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+    created_at: { type: Date, default: Date.now },
+    updated_at: { type: Date, default: Date.now }
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
