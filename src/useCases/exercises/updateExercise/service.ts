@@ -29,8 +29,8 @@ export class UpdateExerciseService {
         if (data.category) exercise.category = data.category;
         if (data.equipment) exercise.equipment = data.equipment;
         if (data.type) exercise.type = data.type;
-        if (data.reps) exercise.reps = data.reps;
-        if (data.sets) exercise.sets = data.sets;
+        if (data.reps !== undefined) exercise.reps = data.reps;
+        if (data.sets !== undefined) exercise.sets = data.sets;
         if (data.duration) exercise.duration = data.duration;
         
         await exercise.save()
